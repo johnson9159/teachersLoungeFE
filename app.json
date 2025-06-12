@@ -1,0 +1,62 @@
+{
+  "expo": {
+    "name": "Teachers' Lounge",
+    "slug": "teachersLounge",
+    "version": "1.1.3",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "userInterfaceStyle": "light",
+    "sdkVersion": "53.0.0",
+    "scheme": "tlapp",
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#411C00"
+      },
+      "bundleIdentifier": "com.teachers-lounge-app.client",
+      "usesAppleSignIn": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#411C00"
+      },
+      "package": "com.tlTest.client",
+      "splash": {
+        "image": "./assets/logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#411C00"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-apple-authentication",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.503056180344-b2mc69o5h958afpkoclbjl6pk3lcc6dl"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "69d3b52f-7f91-473d-9b13-a1544fe8a122"
+      }
+    }
+  }
+}
