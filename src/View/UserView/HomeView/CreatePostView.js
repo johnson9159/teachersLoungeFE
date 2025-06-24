@@ -77,7 +77,7 @@ function CreatePostView({ navigation }) {
           <Text style={styles.label}>Select a community (optional):</Text>
           <SelectList
             setSelected={(value) => {
-              if (value === "None") {
+              if (value === null || value === "None") {
                 setSelectedCommunityId(null);
                 setSelectedCommunityName("");
               } else {
@@ -87,14 +87,14 @@ function CreatePostView({ navigation }) {
               }
             }}
             data={[
-              { key: null, value: "None" },
+              { key: "None", value: "None" },
               ...communities,
             ]}
             placeholder="Select a community"
             defaultOption={
               selectedCommunityId
                 ? { key: selectedCommunityId, value: selectedCommunityName }
-                : null
+                : { key: "None", value: "None" }
             }
             boxStyles={styles.selectBox}
           />
@@ -115,7 +115,7 @@ function CreatePostView({ navigation }) {
             <TouchableOpacity
               style={App_StyleSheet.medium_button}
               onPress={() => {
-                if (selectedCommunityId !== "None") {
+                if (selectedCommunityId && selectedCommunityId !== "None") {
                   createCommunityPost(
                     { navigation },
                     postTitle,

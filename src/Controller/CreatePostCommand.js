@@ -14,6 +14,7 @@ async function CreatePost({ navigation }, title, content, file, user) {
         Authorization: "Bearer " + (await SecureStore.getItemAsync("token")),
       },
       body: JSON.stringify({
+        title: title,
         content: content,
         fileUrl: file.url,
         email: user.userUserName,

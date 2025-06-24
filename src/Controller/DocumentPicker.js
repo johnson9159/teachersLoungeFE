@@ -43,16 +43,16 @@ async function selectDoc() {
 
     let bucket = "";
     let fileUrl = "";
+    let publicFileUrl = "";
     if (responseOfFileUpload.status == 200) {
       let responseUpload = await responseOfFileUpload.json();
       bucket = responseUpload.bucket;
       fileUrl = responseUpload.file;
+      publicFileUrl = responseUpload.url || `https://${bucket}.s3.us-east-2.amazonaws.com/${fileUrl}`;
     } else {
       console.log("Unable to connect to server when uploading file, check that the url is correct and the the server is running...");
       Alert.alert('Failed to upload file')
     }
-    // This url assumes us-east-2
-    let publicFileUrl = "https://" + bucket + ".s3.us-east-2.amazonaws.com/" + fileUrl;
 
     // Log the public file url
     console.log("Public file url: " + publicFileUrl);
@@ -80,7 +80,7 @@ async function selectPic(isProfilePic) {
   // Result is not null
   console.log(result);
   
-  if (result) {
+  if (result && !result.canceled && result.assets && result.assets.length > 0) {
     let uploadData = new FormData();
     const mimeType = result.assets[0].mimeType;
     const username = await SecureStore.getItemAsync("username");
@@ -124,17 +124,17 @@ async function selectPic(isProfilePic) {
 
     let bucket = "";
     let fileUrl = "";
+    let publicFileUrl = "";
     if (responseOfFileUpload.status == 200) {
       let responseUpload = await responseOfFileUpload.json();
       bucket = responseUpload.bucket;
       fileUrl = responseUpload.file;
+      publicFileUrl = responseUpload.url || `https://${bucket}.s3.us-east-2.amazonaws.com/${fileUrl}`;
       Alert.alert('Image upload was successful!')
     } else {
       console.log("Unable to connect to server when uploading file, check that the url is correct and the the server is running...");
       Alert.alert('Failed to upload file')
     }
-    // This url assumes us-east-2
-    let publicFileUrl = "https://" + bucket + ".s3.us-east-2.amazonaws.com/" + fileUrl;
 
     // Log the public file url
     console.log("Public file url: " + publicFileUrl);

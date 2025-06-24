@@ -10,6 +10,7 @@ import FriendsView from "./FriendsView/FriendsView.js";
 import MessagesNavigator from "./MessageView/MessagesNavigator.js";
 import ProfileNavigator from "./ProfileView/ProfileNavigator.js";
 import FriendsNavigator from "./FriendsView/FriendsNavigator.js";
+import PrivateSpacesNavigator from "./PrivateSpacesView/PrivateSpacesNavigator.js";
 
 const Tab = createBottomTabNavigator();
 function TabNavigator() {
@@ -18,14 +19,14 @@ function TabNavigator() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        activeBackgroundColor: "#411c00",
-        activeTintColor: "#fef3d7",
-        inactiveBackgroundColor: "#411c00",
-        inactiveTintColor: "black",
+        activeBackgroundColor: "#6382E8",
+        activeTintColor: "#FFFFFF",
+        inactiveBackgroundColor: "#6382E8",
+        inactiveTintColor: "#FFFFFF",
         headerStyle: {
-          backgroundColor: "#411c00",
+          backgroundColor: "#6382E8",
         },
-        headerTintColor: "#411c00",
+        headerTintColor: "#6382E8",
       }}
     >
       <Tab.Screen
@@ -51,12 +52,12 @@ function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Create Post"
-        component={CreatePostView}
+        name="Spaces"
         initialParams={route.params}
+        component={PrivateSpacesNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <Entypo name="circle-with-plus" size={size} color={color} />
+            <Entypo name="lock" size={size} color={color} />
           ),
           headerShown: false,
         }}
