@@ -37,33 +37,33 @@ function PostListingsView({ navigation }) {
   return (
     <SafeArea>
       <View style={styles.container}>
-        <View style={App_StyleSheet.content}>
-          {posts && (
-            <FlatList
-              ListEmptyComponent={
+      <View style={App_StyleSheet.content}>
+        {posts && (
+          <FlatList
+            ListEmptyComponent={
+              <Text style={App_StyleSheet.list_message}>
+                {"No posts yet!"}
+              </Text>
+            }
+            ListFooterComponent={
+              posts[0] && (
                 <Text style={App_StyleSheet.list_message}>
-                  {"No posts yet!"}
+                  {"You've viewed all posts!"}
                 </Text>
-              }
-              ListFooterComponent={
-                posts[0] && (
-                  <Text style={App_StyleSheet.list_message}>
-                    {"You've viewed all posts!"}
-                  </Text>
-                )
-              }
-              data={posts}
-              extraData={posts}
-              renderItem={({ item }) => (
-                <PostComponentView
-                  navigation={navigation}
-                  post={item}
-                />
-              )}
-              initialNumToRender={20}
-              maxToRenderPerBatch={20}
-            />
-          )}
+              )
+            }
+            data={posts}
+            extraData={posts}
+            renderItem={({ item }) => (
+              <PostComponentView
+                navigation={navigation}
+                post={item}
+              />
+            )}
+            initialNumToRender={20}
+            maxToRenderPerBatch={20}
+          />
+        )}
         </View>
         
         {/* Floating Action Button for creating posts */}

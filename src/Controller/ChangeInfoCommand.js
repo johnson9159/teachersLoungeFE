@@ -24,7 +24,7 @@ class ChangeInfoCommand {
       };
 
       // Determine what field to update based on the last clicked item
-      if (ProfileNavigator.lastClick == "Edit Name") {
+    if (ProfileNavigator.lastClick == "Edit Name") {
         // Split the name into first and last name
         const nameParts = content.trim().split(" ");
         const firstName = nameParts[0] || "";
@@ -34,18 +34,18 @@ class ChangeInfoCommand {
         updateData.lastname = lastName;
         
         // Update local user object
-        this.user.changeUserName(content);
-      } else if (ProfileNavigator.lastClick == "Edit Username") {
+      this.user.changeUserName(content);
+    } else if (ProfileNavigator.lastClick == "Edit Username") {
         updateData.newEmail = content.trim();
         
         // Update local user object
-        this.user.userUserName = content;
-      } else if (ProfileNavigator.lastClick == "Edit School") {
+      this.user.userUserName = content;
+    } else if (ProfileNavigator.lastClick == "Edit School") {
         updateData.schoolName = content.trim();
         
         // Update local user object
-        this.user.school = content;
-      }
+      this.user.school = content;
+    }
 
       // Make API call to update user info
       const response = await fetch(`${apiUrl}/updateUserInfo`, {
@@ -67,8 +67,8 @@ class ChangeInfoCommand {
           await SecureStore.setItemAsync("username", content.trim());
         }
         
-        navigation.navigate("Profile");
-        navigation.navigate("Edit Profile");
+    navigation.navigate("Profile");
+    navigation.navigate("Edit Profile");
       } else {
         Alert.alert("Error", result.message || "Failed to update information");
         console.error("Update failed:", result);

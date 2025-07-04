@@ -126,11 +126,14 @@ export const handleAppleLogin = async (navigation, credential) => {
 // Process successful social login
 const handleSocialLoginSuccess = async (navigation, data) => {
   if (data.user != null) {
+    // 兼容新旧版本：优先使用SchoolName，如果不存在则使用SchoolID，都没有则使用空字符串
+    const schoolInfo = data.user.SchoolName || data.user.SchoolID || "";
+    
     let user = new User(
       data.user.Email,
       data.user.FirstName,
       data.user.LastName,
-      data.user.SchoolID,
+      schoolInfo,
       data.user.Role,
       data.user.ProfilePicLink
     );

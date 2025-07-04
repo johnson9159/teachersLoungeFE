@@ -210,6 +210,9 @@ function SignInView({ navigation }) {
             onChangeText={(value) => (password = value)}
           />
         </KeyboardAvoidingView>
+        
+
+        
         <TouchableOpacity
           style={App_StyleSheet.default_button}
           onPress={

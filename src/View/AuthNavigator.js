@@ -8,6 +8,7 @@ import RegisterView from "./RegisterView";
 import LogOutView from "./UserView/LogOutView";
 import UploadView from "./UserView/HomeView/UploadView";
 import CreatePostView from "./UserView/HomeView/CreatePostView.js";
+import TwoFactorAuthView from "./TwoFactorAuthView";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ function AuthNavigator({ route }) {
         <Stack.Screen name="Login" component={SignInView} />
         <Stack.Screen name="User" component={UserView} />
         <Stack.Screen name="Register" component={RegisterView} />
+        <Stack.Screen name="TwoFactorAuth" component={TwoFactorAuthView} />
 
         <Stack.Screen name="LogOut" component={LogOutView} />
 

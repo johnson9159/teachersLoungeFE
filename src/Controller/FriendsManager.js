@@ -20,7 +20,7 @@ import { Alert } from "react-native";
 async function getUserInfo(userEmail) {
   if (userEmail != "") {
     try {
-      let userInfoUrl = `${apiUrl}${getUserInfoRoute}?userEmail=${userEmail}`;
+      let userInfoUrl = apiUrl + getUserInfoRoute + `?userEmail=${userEmail}`;
       console.log(userInfoUrl);
       const reqOptions = {
         method: "GET",
@@ -34,11 +34,14 @@ async function getUserInfo(userEmail) {
       var data = results.data;
       var friend;
       if (data[0]) {
+        // 兼容不同的school字段名：schoolname, schoolid, SchoolName, SchoolID
+        const schoolInfo = data[0].schoolname || data[0].schoolid || data[0].SchoolName || data[0].SchoolID || "";
+        
         friend = new Friend(
           data[0].email,
           data[0].firstname,
           data[0].lastname,
-          data[0].schoolid,
+          schoolInfo,
           data[0].role
         );
       }
@@ -142,12 +145,15 @@ async function getFriendsList(userEmail) {
     var count = 0;
     if (data) {
       while (data[count] != undefined) {
+        // 兼容不同的school字段名：schoolname, schoolid, SchoolName, SchoolID
+        const schoolInfo = data[count].schoolname || data[count].schoolid || data[count].SchoolName || data[count].SchoolID || "";
+        
         friends.unshift(
           new Friend(
             data[count].email,
             data[count].firstname,
             data[count].lastname,
-            data[count].schoolid,
+            schoolInfo,
             data[count].role
           )
         );

@@ -21,12 +21,15 @@ const searchUser = async (searchQuery) => {
   var count = 0;
   if (data) {
     while (data[count] != undefined) {
+      // 兼容不同的school字段名：schoolname, schoolid, SchoolName, SchoolID
+      const schoolInfo = data[count].schoolname || data[count].schoolid || data[count].SchoolName || data[count].SchoolID || "";
+      
       users.unshift(
         new Friend(
           data[count].email,
           data[count].firstname,
           data[count].lastname,
-          data[count].schoolid,
+          schoolInfo,
           data[count].role
         )
       );

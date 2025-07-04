@@ -27,12 +27,15 @@ async function getPendingUsers() {
   var count = 0;
   if (data) {
     while (data[count] != undefined) {
+      // 兼容新旧版本：优先使用SchoolName，如果不存在则使用SchoolID，都没有则使用空字符串
+      const schoolInfo = data[count].SchoolName || data[count].SchoolID || "";
+      
       users.unshift(
         new User(
           data[count].Email,
           data[count].FirstName,
           data[count].LastName,
-          data[count].SchoolID,
+          schoolInfo,
           data[count].Role
         )
       );
@@ -60,12 +63,15 @@ async function getApprovedUsers() {
   var count = 0;
   if (data) {
     while (data[count] != undefined) {
+      // 兼容新旧版本：优先使用SchoolName，如果不存在则使用SchoolID，都没有则使用空字符串
+      const schoolInfo = data[count].SchoolName || data[count].SchoolID || "";
+      
       users.unshift(
         new User(
           data[count].Email,
           data[count].FirstName,
           data[count].LastName,
-          data[count].SchoolID,
+          schoolInfo,
           data[count].Role
         )
       );

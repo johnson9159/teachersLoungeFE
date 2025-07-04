@@ -445,6 +445,67 @@ const App_StyleSheet = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  
+  // 2FA Styles
+  twoFactorTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: UI_Colors.blue,
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  twoFactorSubtitle: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 30,
+  },
+  otpContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 30,
+    paddingHorizontal: 10,
+  },
+  otpInput: {
+    width: 40,
+    height: 50,
+    borderWidth: 2,
+    borderColor: UI_Colors.blue,
+    borderRadius: 8,
+    fontSize: 20,
+    fontWeight: 'bold',
+    backgroundColor: UI_Colors.white,
+    color: 'black',
+  },
+  resendContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  resendText: {
+    color: UI_Colors.blue,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  resendTimerText: {
+    color: '#666',
+    fontSize: 16,
+  },
+  
+  // 2FA Toggle Styles
+  twoFAToggleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 5,
+    paddingVertical: 10,
+    marginBottom: 10,
+  },
+  twoFAToggleText: {
+    fontSize: 16,
+    color: '#333',
+    flex: 1,
+  },
 });
 
 export default App_StyleSheet;
