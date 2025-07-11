@@ -149,11 +149,11 @@ const handleSocialLoginSuccess = async (navigation, data) => {
           // Admin account bypasses 2FA and goes directly to main app
           navigation.navigate("User", { User: user });
         } else {
-          // Check if 2FA is enabled for this user
-          if (data.requires2FA) {
-            navigation.navigate("TwoFactorAuth", { User: user, email: data.user.Email });
-          } else {
-            navigation.navigate("User", { User: user });
+        // Check if 2FA is enabled for this user
+        if (data.requires2FA) {
+          navigation.navigate("TwoFactorAuth", { User: user, email: data.user.Email });
+        } else {
+          navigation.navigate("User", { User: user });
           }
         }
       } else {

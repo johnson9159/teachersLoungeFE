@@ -23,7 +23,16 @@ function CreateNewChatView({ navigation }) {
   useEffect(() => {
     const fetchUsers = async () => {
       if (isFocused) {
+        console.log("=== DEBUG: CreateNewChatView User Info ===");
+        console.log("Full User object:", route.params.User);
+        console.log("User.userUserName:", route.params.User.userUserName);
+        console.log("User.userName:", route.params.User.userName);
+        console.log("User.userRole:", route.params.User.userRole);
+        console.log("User.school:", route.params.User.school);
+        console.log("=== END DEBUG ===");
+        
         const array = await getFriendsList(route.params.User.userUserName);
+        console.log("getFriendsList returned:", array);
         setListOfUsers(array);
       }
     };

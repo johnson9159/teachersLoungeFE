@@ -57,7 +57,7 @@ async function login({ navigation }, email, password) {
               } else {
                 console.log("Regular user - requiring 2FA");
                 // 2FA is mandatory for all other users
-                navigation.navigate("TwoFactorAuth", { User: user, email: email });
+              navigation.navigate("TwoFactorAuth", { User: user, email: email });
               }
             } else {
               //Only approved users can login

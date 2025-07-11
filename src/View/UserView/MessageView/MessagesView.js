@@ -17,12 +17,19 @@ function MessagesView({ navigation }) {
   const route = useRoute();
   const [conversations, setConversations] = useState([]);
 
-  useFocusEffect(() => {
-    loadConversations();
-  })
+  useFocusEffect(
+    React.useCallback(() => {
+      loadConversations();
+    }, [])
+  );
 
   const loadConversations = async () => {
+    console.log("=== DEBUG: MessagesView loadConversations ===");
+    console.log("User object:", route.params.User);
+    console.log("userUserName:", route.params.User.userUserName);
+    
     const data = await getUserConversations(route.params.User.userUserName);
+    console.log("getUserConversations returned:", data);
     setConversations(data);
   };
 

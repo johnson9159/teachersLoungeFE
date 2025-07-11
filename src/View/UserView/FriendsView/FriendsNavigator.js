@@ -38,6 +38,7 @@ function FriendsNavigator({ navigation }) {
         initialParams={route.params}
         options={{
           headerBackTitleVisible: false,
+          headerLeft: null,
           headerRight: () => (
             <TouchableOpacity
               style={App_StyleSheet.header_button}

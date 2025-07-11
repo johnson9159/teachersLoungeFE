@@ -128,6 +128,11 @@ async function unfriendUser({ navigation }, frienderEmail, friendeeEmail) {
 }
 
 async function getFriendsList(userEmail) {
+  console.log("=== DEBUG: getFriendsList called ===");
+  console.log("userEmail parameter:", userEmail);
+  console.log("typeof userEmail:", typeof userEmail);
+  console.log("userEmail length:", userEmail?.length);
+  
   if (userEmail != "") {
     var friends = [];
     let friendsUrl = apiUrl + getFriendsListRoute + `?userEmail=${userEmail}`;
