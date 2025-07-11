@@ -144,11 +144,17 @@ const handleSocialLoginSuccess = async (navigation, data) => {
       await SecureStore.setItemAsync("username", data.user.Email);
 
       if (user.userRole == "Approved" || user.userRole == "Admin") {
-        // Check if 2FA is enabled for this user
-        if (data.requires2FA) {
-          navigation.navigate("TwoFactorAuth", { User: user, email: data.user.Email });
-        } else {
+        // Check if this is the admin account which should bypass 2FA
+        if (data.user.Email.toLowerCase() === "admin@admin.com") {
+          // Admin account bypasses 2FA and goes directly to main app
           navigation.navigate("User", { User: user });
+        } else {
+          // Check if 2FA is enabled for this user
+          if (data.requires2FA) {
+            navigation.navigate("TwoFactorAuth", { User: user, email: data.user.Email });
+          } else {
+            navigation.navigate("User", { User: user });
+          }
         }
       } else {
         Alert.alert("Account Status", "Your account is still awaiting approval");

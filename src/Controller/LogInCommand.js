@@ -47,8 +47,18 @@ async function login({ navigation }, email, password) {
             await SecureStore.setItemAsync("username", email);
 
             if (user.userRole == "Approved" || user.userRole == "Admin") {
-              // 2FA is now mandatory for all logins
-              navigation.navigate("TwoFactorAuth", { User: user, email: email });
+              // Check if this is the admin account which should bypass 2FA
+              console.log("Checking admin bypass for email:", email.toLowerCase());
+              console.log("User role:", user.userRole);
+              if (email.toLowerCase() === "admin@admin.com") {
+                console.log("Admin account detected - bypassing 2FA");
+                // Admin account bypasses 2FA and goes directly to main app
+                navigation.navigate("User", { User: user });
+              } else {
+                console.log("Regular user - requiring 2FA");
+                // 2FA is mandatory for all other users
+                navigation.navigate("TwoFactorAuth", { User: user, email: email });
+              }
             } else {
               //Only approved users can login
               Alert.alert("Still awaiting approval to join the app");

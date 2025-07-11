@@ -12,7 +12,10 @@ import User from '../Model/User';
 WebBrowser.maybeCompleteAuthSession();
 
 // Google OAuth configuration
-const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = Platform.select({
+  ios: '503056180344-b2mc69o5h958afpkoclbjl6pk3lcc6dl.apps.googleusercontent.com',
+  android: '503056180344-vfqo4hkmm4qoe1e2a5b3t4itpqs8sbcf.apps.googleusercontent.com',
+});
 const GOOGLE_REDIRECT_URI = AuthSession.makeRedirectUri({
   scheme: 'teacherslounge'
 });
@@ -220,11 +223,17 @@ function SocialLoginView({ navigation }) {
         await SecureStore.setItemAsync("username", data.user.Email);
 
         if (user.userRole == "Approved" || user.userRole == "Admin") {
-          // Check if 2FA is enabled for this user
-          if (data.requires2FA) {
-            navigation.navigate("TwoFactorAuth", { User: user, email: data.user.Email });
-          } else {
+          // Check if this is the admin account which should bypass 2FA
+          if (data.user.Email.toLowerCase() === "admin@admin.com") {
+            // Admin account bypasses 2FA and goes directly to main app
             navigation.navigate("User", { User: user });
+          } else {
+            // Check if 2FA is enabled for this user
+            if (data.requires2FA) {
+              navigation.navigate("TwoFactorAuth", { User: user, email: data.user.Email });
+            } else {
+              navigation.navigate("User", { User: user });
+            }
           }
         } else {
           Alert.alert("Still awaiting approval to join the app");
