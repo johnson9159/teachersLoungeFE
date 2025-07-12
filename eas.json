@@ -12,11 +12,12 @@
       "distribution": "internal"
     },
     "production": {
-      "packageManager": "npm",
       "node": "20.11.0",
       "env": {
         "NODE_ENV": "production"
-      }
+      },
+      "resourceClass": "medium",
+      "android": { "buildType": "app-bundle" }
     }
   },
   "submit": {

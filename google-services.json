@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "980857703837",
+    "project_id": "teacher-s-lounge-edc67",
+    "storage_bucket": "teacher-s-lounge-edc67.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980857703837:android:6e2194e1b813ca78ea7374",
+        "android_client_info": {
+          "package_name": "com.teacherslounge.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD4FRKSLgw5DW63r-6iBbsVC7hAzYK1Mg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
