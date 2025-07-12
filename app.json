@@ -32,10 +32,12 @@
       }
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#411C00"
       },
+      "versionCode": 2,
       "package": "com.tlTest.client",
       "splash": {
         "image": "./assets/logo.png",
@@ -58,7 +60,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "69d3b52f-7f91-473d-9b13-a1544fe8a122"
+        "projectId": "9bae1ef6-3ae1-4fb5-977e-3567e63ab7b0"
       }
     }
   }
