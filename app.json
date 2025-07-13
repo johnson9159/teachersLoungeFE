@@ -56,7 +56,9 @@
         {
           "iosUrlScheme": "com.googleusercontent.apps.503056180344-b2mc69o5h958afpkoclbjl6pk3lcc6dl"
         }
-      ]
+      ],
+      "expo-mail-composer",
+      "expo-web-browser"
     ],
     "extra": {
       "eas": {
