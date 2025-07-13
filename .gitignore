@@ -6,3 +6,4 @@ client/%ProgramData%
 .env
 /ios
 /android
+/google-services.json.client.api
